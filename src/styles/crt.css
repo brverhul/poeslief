@@ -1,0 +1,44 @@
+.crt-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.crt-svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+.crt-appear {
+  will-change: filter;
+  box-sizing: border-box;
+
+}
+
+/* ONLY effect: focus-in */
+.crt-appear.boot {
+  animation: focusIn 300ms ease-out;
+}
+
+@keyframes focusIn {
+  from {
+    filter: blur(14px);
+    opacity: 0.4;
+  }
+
+  to {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap");
+
+.gig-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.gig {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 12px;
+
+  position: relative;
+  isolation: isolate;
+
+  font-family: "Roboto Mono", monospace;
+  color: rgb(var(--main));
+
+  border-bottom: 1px solid rgba(var(--main), 0.2);
+
+  transition:
+    background 0.12s ease,
+    outline 0.12s ease,
+    box-shadow 0.12s ease;
+
+  outline: 1px solid transparent;
+  cursor: pointer;
+}
+
+.gig:hover {
+  outline: 2px solid currentColor;
+
+  box-shadow:
+    0 0 4px currentColor,
+    0 0 10px currentColor;
+
+  background: rgba(var(--alt), 0.12);
+}
+
+/* LEFT DATE */
+.gig-date {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+
+  opacity: 0.75;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+
+  filter: brightness(1.15);
+}
+
+/* RIGHT SIDE */
+.gig-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+  margin-left: auto;
+
+  text-align: right;
+}
+
+/* MAIN TITLE */
+.gig-title {
+  font-size: 20px;
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor,
+    0 0 10px currentColor;
+
+  filter: brightness(1.3);
+
+  animation: terminalFlicker 2.5s infinite;
+}
+
+/* VENUE / CITY LINE */
+.gig-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+}
+
+.gig-venue {
+  color: rgba(var(--main), 0.78);
+  letter-spacing: 0.05em;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  opacity: 0.75;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+
+  filter: brightness(1.15);
+  
+}
+
+.gig-sep {
+  color: rgb(var(--alt));
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+
+  filter: brightness(1.15);
+}
+
+.gig-city {
+  color: rgb(var(--alt));
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+
+  opacity: 0.75;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+
+  filter: brightness(1.15);
+}
+
+/* EXACT SAME FLICKER */
+@keyframes terminalFlicker {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0.88;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.92;
+  }
+}

@@ -1,0 +1,54 @@
+.placeholder {
+  text-align: center;
+  padding: 10vh 20px 30px;
+  letter-spacing: 0.1em;
+}
+
+.placeholder-message {
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  /* 👇 stronger CRT bloom (no color change) */
+  text-shadow:
+    0 0 3px currentColor,
+    0 0 8px currentColor,
+    0 0 16px currentColor,
+    0 0 24px currentColor;
+
+  /* makes it feel brighter without changing color */
+  filter: brightness(1.3);
+
+  animation: terminalFlicker 2.5s infinite;
+}
+
+.placeholder-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.75;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+
+  filter: brightness(1.15);
+}
+
+/* slightly more “alive” flicker */
+@keyframes terminalFlicker {
+  0%, 90%, 100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0.88;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.92;
+  }
+}
