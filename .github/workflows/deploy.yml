@@ -27,9 +27,6 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Install dependencies (if needed)
-        run: deno install
-
       - name: Build project
         run: deno task build
 
