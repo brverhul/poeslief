@@ -7,13 +7,13 @@ import "./styles/placeholder.css"
 import { useState } from "react";
 
 
-import type { GigProps } from "./components/Gigs";
+import type { GigProps } from "./components/Gigs.tsx";
 
-import Frame from "./components/Frame";
-import CRTImage from "./components/CRTImage";
-import { GigList } from "./components/Gigs";
-import CRTReveal from "./components/CRTReveal";
-import Placeholder from "./components/Placeholder";
+import Frame from "./components/Frame.tsx";
+import CRTImage from "./components/CRTImage.tsx";
+import { GigList } from "./components/Gigs.tsx";
+import CRTReveal from "./components/CRTReveal.tsx";
+import Placeholder from "./components/Placeholder.tsx";
 
 
 const GIGS: GigProps[] = [

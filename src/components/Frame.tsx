@@ -1,6 +1,6 @@
 import type { ReactNode,  } from "react";
 
-import Navigation from "./Navigation";
+import Navigation from "./Navigation.tsx";
 
 type FrameProps = {
   title: string;
