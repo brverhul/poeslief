@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "function-no-unknown": true,
+    "property-no-unknown": true,
+    "unit-no-unknown": true,
+    "color-no-invalid-hex": true,
+    "declaration-property-value-no-unknown": true,
+    "alpha-value-notation": null,
+    "custom-property-no-missing-var-function": true
+  }
+}

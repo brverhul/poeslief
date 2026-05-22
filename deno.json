@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "build": "deno run -A npm:vite build",
+    "lint": "deno run -A npm:eslint .",
+    "lint:css": "npx stylelint 'src/**/*.css'"
+  }
+}

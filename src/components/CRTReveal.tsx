@@ -5,12 +5,15 @@ type CRTRevealProps = {
   activeTab: string;
 };
 
+
 export default function CRTReveal({ children, activeTab }: CRTRevealProps) {
+
   const [boot, setBoot] = useState(true);
 
   useEffect(() => {
-    setBoot(true);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setBoot(true);
     const t = setTimeout(() => setBoot(false), 300);
 
     return () => clearTimeout(t);

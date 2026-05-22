@@ -8,7 +8,7 @@ export interface GigProps {
   city: string;
 }
 
-export function Gig({ id, title, date, venue, city }: GigProps) {
+export function Gig({ title, date, venue, city }: GigProps) {
   return (
     <div className="gig">
       <span className="gig-date">{date}</span>
