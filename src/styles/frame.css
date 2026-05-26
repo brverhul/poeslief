@@ -38,68 +38,32 @@
   right: 0;
 }
 
-.frame-top {
-  position: relative;
-  height: 32px;
-}
-
 .frame-bottom {
   position: absolute;
-  bottom: -12px;
+  bottom: -12px; /* pulls the nav bar down onto the bottom border */
   width: calc(100% - 60px);
-  left: 30px;
+  /* left: 30px;  waarom is dit nodig? */
   display: flex;
   justify-content: center;
   gap: 36px;
 }
 
-
-.title::after {
-  background: var(--your-page-bg); /* same as page bg */
-  content: "";
-  height: 3px;
-  width: 100%;
-  left: 0;
-  top: 13px;
-  position: absolute;
-  z-index: -1;
-}
-
 .frame-top {
   position: absolute;
-  top: -12px;        /* pulls it up onto the top border */
-  left: 30px;        /* matches the left offset of frame-bottom */
-  height: 24px;
+  top: -12px;        /* pulls the title up onto the top border */
+  left: 36px;      
   z-index: 1;
 }
 
 .title {
   display: block;
-  height: 24px;
   padding: 0 24px;
-  position: relative;
-  line-height: 24px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 22px;
+  letter-spacing: 0.2em;
+  font-size: 24px;
   background: black;
   z-index: 1;
-  width: fit-content;
 }
-
-.title::before {
-  content: "";
-  position: absolute;
-  background: black;
-  width: 100%;
-  height: 6px;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: -1;
-  filter: blur(2px);
-}
-
 
 .frame-content {
   flex: 1;

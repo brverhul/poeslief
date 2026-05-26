@@ -1,4 +1,4 @@
-import "../styles/gig.css"; // or inline the styles in a <style> tag / styled-component
+import "../styles/gig.css";
 
 export interface GigProps {
   id: number;
