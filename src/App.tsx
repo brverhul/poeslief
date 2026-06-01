@@ -28,41 +28,45 @@ export default function App() {
     <main className="app">
       {/* <CRTImage /> */}
 
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="video-bg"
-      >
-        <source src="gig_smurfpunx_site.mp4" type="video/mp4" />
-      </video>
+      <div className="screen-container"> 
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="video-bg"
+        >
+          <source src="poeslief_test.mp4" type="video/mp4" />
+        </video>
 
-      <Frame title="Poeslief" activeTab={activeTab} onTabChange={setActiveTab}>
+          <Frame title="Poeslief" activeTab={activeTab} onTabChange={setActiveTab}>
 
-        <CRTReveal activeTab={activeTab}>
+            <CRTReveal activeTab={activeTab}>
 
-          {activeTab === "homepage" && <Placeholder
-              message="RRAAWTCH "
-              sub="5 KATERS IN EEN PUNKBAND"
-            />}
+              {activeTab === "homepage" && <Placeholder
+                  message="RRAAWTCH "
+                  sub="5 KATERS IN EEN PUNKBAND"
+                />}
 
-          {activeTab === "gigs" && <GigList gigs={GIGS} />}
-          
-          {activeTab === "merch" && (
-            <Placeholder
-              message="COMING SOON"
-              sub="ongeduldige poesjes..."
-            />
-          )}
-          {activeTab === "songs" && <Placeholder
-              message="SOOOON.."
-              sub="eerst nog wat aan mijn ballen lekken"
-            />}
+              {activeTab === "gigs" && <GigList gigs={GIGS} />}
+              
+              {activeTab === "merch" && (
+                <Placeholder
+                  message="COMING SOON"
+                  sub="ongeduldige poesjes..."
+                />
+              )}
+              {activeTab === "songs" && <Placeholder
+                  message="SOOOON.."
+                  sub="eerst nog wat aan mijn ballen lekken"
+                />}
 
-        </CRTReveal>
+            </CRTReveal>
 
-      </Frame>
+          </Frame>
+
+        </div>
+
     </main>
   );
 }
