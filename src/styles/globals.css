@@ -22,10 +22,12 @@
 
 body {
   margin: 0;
-  padding: 0;
   overflow: hidden;
-  height: 100%;
-  overscroll-behavior: none;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* pin to bottom */
+  height: 100svh;
 }
 
 .app {
@@ -41,9 +43,13 @@ body {
 
 .screen-container {
   position: relative;
-  height: 100vh;        /* fallback */
-  height: 100svh;
+  
+  /* Fit within both dimensions, minus 24px for left+right padding */
+  width: min(calc(100svw - 24px), calc((100svh - 24px) * 9 / 16));
+  height: min(calc(100svh - 24px), calc((100svw - 24px) * 16 / 9));
+  
   aspect-ratio: 9 / 16;
+  margin-bottom: 12px; /* bottom padding */
 }
 
 .video-bg {
