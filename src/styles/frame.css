@@ -40,33 +40,48 @@
 
 .frame-bottom {
   position: absolute;
-  bottom: -12px; /* pulls the nav bar down onto the bottom border */
+  bottom: -20px; /* pulls the nav bar down onto the bottom border */
   width: calc(100% - 60px);
+  height: auto;
   /* left: 30px;  waarom is dit nodig? */
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 36px;
+  left: 30px;
 
   padding-bottom: env(safe-area-inset-bottom);
-
 }
 
 .frame-top {
   position: absolute;
-  top: -12px;        /* pulls the title up onto the top border */
+  top: -20px;        /* pulls the title up onto the top border */
   left: 36px;      
   z-index: 1;
 }
 
 .title {
   display: block;
-  padding: 0 24px;
+  padding: 8px 16px;
+
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 24px;
-  background: black;
+  background: transparent;
   z-index: 1;
+  position: relative;
 }
+
+.title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,1);
+  filter: blur(10px);
+  z-index: -1;
+  transition: filter 0.2s, background 0.2s;
+}
+
 
 .frame-content {
   flex: 1;

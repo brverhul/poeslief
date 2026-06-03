@@ -1,6 +1,7 @@
 .nav-item {
-  display: block;
-  padding: 0 10px;
+  display: inline-block;
+  position: relative;
+  padding: 8px 16px;
   text-align: center;
   line-height: 24px; /* This puts it nicely in the middle */
   color: currentColor;
@@ -8,12 +9,31 @@
   letter-spacing: 0.08em;
   font-size: 16px;
   outline: 0.5px solid transparent; /* makes the transition smooth? why? */
-  transition: outline 0.1s; 
-  background: black;        /* masks the border */
-  z-index: 1;               /* lifts it above the border */
+  transition: outline 0.1s, box-shadow 0.2s;
+  z-index: 1;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  filter: blur(4px);
+  z-index: -1;
+  transition: filter 0.2s, background 0.2s;
 }
 
 .nav-item:hover,
 .nav-item.active {
-  outline: 2px solid currentColor;
+  outline: none;
+  box-shadow: 0 0 2cm 2px currentColor;
+  border-radius: 1px;
+
+}
+
+.nav-item:hover::before,
+.nav-item.active::before {
+  background: rgba(0,0,0,1);
+  filter: blur(0px);
+  border-radius: 1px;
 }
