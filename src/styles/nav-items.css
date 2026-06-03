@@ -26,7 +26,7 @@
 .nav-item:hover,
 .nav-item.active {
   outline: none;
-  box-shadow: 0 0 2cm 2px currentColor;
+  box-shadow: 0 0 2px 2px currentColor;
   border-radius: 1px;
 
 }
