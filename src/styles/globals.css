@@ -9,55 +9,47 @@
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color: var(--text);
-
 }
 
-#root {
-  max-width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+html {
+  height: 100%;
 }
 
 body {
   margin: 0;
   overflow: hidden;
   background: black;
+  height: 100dvh;
+  box-sizing: border-box;
+
+  /* safe area padding on all sides */
+  padding-top: max(12px, env(safe-area-inset-top));
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
+}
+
+#root {
+  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* pin to bottom */
-  height: 100svh;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .app {
-  padding: 36px 8px 36px 8px;
-  height: 100vh;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   background: black;
-
   display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .screen-container {
   position: relative;
-  
-  /* Fit within both dimensions, minus 24px for left+right padding */
-  width: min(calc(100svw - 24px), calc((100svh - 24px) * 9 / 16));
-  height: min(calc(100svh - 24px), calc((100svw - 24px) * 16 / 9));
-  
+  width: min(100%, calc(100% * 9 / 16));
+  height: min(100%, calc(100% * 16 / 9));
   aspect-ratio: 9 / 16;
-  margin-bottom: 12px; /* bottom padding */
-}
-
-.video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
 }
