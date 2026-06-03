@@ -1,7 +1,6 @@
 :root {
   --text: #f5f5f5;
   --text-h: #08060d;
-
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -11,36 +10,42 @@
   color: var(--text);
 }
 
-html {
+html, body {
+  margin: 0;
+  padding: 0;
   height: 100%;
+  overflow: hidden;
+  background: black;
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-  background: black;
+  /* Use svh — the "small" viewport unit that excludes browser chrome.
+     More reliable than dvh for overflow: hidden layouts on iOS/Android. */
+  height: 100svh;
+  /* Fallback for browsers without svh support */
   height: 100dvh;
-  box-sizing: border-box;
+}
 
-  /* safe area padding on all sides */
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: black;
+
+  /* Safe area + 12px padding lives HERE, not on body.
+     This way percentage heights in children still resolve correctly. */
   padding-top: max(12px, env(safe-area-inset-top));
   padding-bottom: max(12px, env(safe-area-inset-bottom));
   padding-left: max(12px, env(safe-area-inset-left));
   padding-right: max(12px, env(safe-area-inset-right));
 }
 
-#root {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
 .app {
   width: 100%;
   height: 100%;
-  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,16 +53,17 @@ body {
 }
 
 .screen-container {
-  position: relative;
-  width: min(100%, calc(100% * 9 / 16));
-  height: min(100%, calc(100% * 16 / 9));
+  /* Fit inside whatever space remains after safe-area padding */
+  width: min(100%, calc(100vh * 9 / 16));
+  height: min(100%, calc(100vw * 16 / 9));
   aspect-ratio: 9 / 16;
+  position: relative;
+  overflow: hidden;
 }
 
 .video-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
