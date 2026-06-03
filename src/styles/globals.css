@@ -22,6 +22,10 @@
 
 body {
   margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  overscroll-behavior: none;
 }
 
 .app {
@@ -37,7 +41,8 @@ body {
 
 .screen-container {
   position: relative;
-  height: calc(100dvh - 72px); /* padding */
+  height: 100vh;        /* fallback */
+  height: 100svh;
   aspect-ratio: 9 / 16;
 }
 
