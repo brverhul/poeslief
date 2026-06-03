@@ -20,7 +20,6 @@ body {
   overflow: hidden;
   background: black;
   height: 100svh;
-  max-height: 100dvh;
   box-sizing: border-box;
 
   /* safe area padding on all sides */
