@@ -83,8 +83,8 @@ export default function App() {
           <CRTReveal activeTab={activeTab}>
             {activeTab === "homepage" && (
               <Placeholder
-                message="TIK NU en vecht!"
-                sub="TEGEN INDIVIDUALISME"
+                message="TIK NU"
+                sub="en vindt de verborgen schatten van deze site"
               />
             )}
 
