@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap");
-
 .gig-list {
   display: flex;
   flex-direction: column;
 
   gap: 8px;
+  z-index: 1;
 }
 
 .gig {
@@ -13,13 +12,27 @@
 
   align-items: center;
   
-  padding: 8px 12px;
+  padding: 8px 16px;
 
   font-family: "Roboto Mono", monospace;
+
+  position: relative;
+
 }
 
+/* blurred background via pseudo-element */
+.gig::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  filter: blur(4px);
+  z-index: -1;
+}
+
+
 .gig-date {
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.08em;
   
   opacity: 0.75;
@@ -28,13 +41,13 @@
     0 0 2px currentColor,
     0 0 6px currentColor;
 
-  filter: brightness(1.15);
+  filter: brightness(1.30);
 }
 
 .gig-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0px;
 
   margin-left: auto; /* aligns it to the right */
 
@@ -98,4 +111,81 @@
   96% {
     opacity: 0.92;
   }
+}
+
+
+
+.gig.past {
+  opacity: 0.38;
+  filter: saturate(0.2);
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(1.5px);
+}
+
+.gig.past .gig-title {
+  animation: none;
+  text-shadow: none;
+  filter: none;
+}
+
+.gig.past .gig-date,
+.gig.past .gig-meta {
+  text-shadow: none;
+  filter: none;
+}
+
+/* worn-through tape line */
+.gig.past::after {
+  content: '';
+  position: absolute;
+  left: 16px; right: 16px;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transform: translateY(-50%);
+}
+
+
+.gig-title {
+  font-size: clamp(16px, 4vw, 20px);
+}
+
+.gig-date {
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.gig-meta {
+  font-size: clamp(9px, 2vw, 12px);
+}
+
+.gig {
+  padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 16px);
+}
+
+
+.gig-tickets {
+
+  align-self: stretch; /* fill the width of .gig-info */
+  text-align: center;  /* center the text inside it */
+
+
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: currentColor;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0px 2px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+
+  text-shadow:
+    0 0 2px currentColor,
+    0 0 6px currentColor;
+}
+
+.gig-tickets:hover {
+  opacity: 1;
 }

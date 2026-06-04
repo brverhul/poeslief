@@ -6,11 +6,18 @@ export interface GigProps {
   date: string;
   venue: string;
   city: string;
+  ticketUrl?: string;
 }
 
-export function Gig({ title, date, venue, city }: GigProps) {
+export function Gig({ title, date, venue, city, ticketUrl }: GigProps) {
+
+  const isPast = (() => {
+    const [day, month, year] = date.split("-").map(Number);
+    return new Date(year, month - 1, day) < new Date();
+  })();
+
   return (
-    <div className="gig">
+    <div className={`gig ${isPast ? 'past' : ''}`}>
       <span className="gig-date">{date}</span>
       <div className="gig-info">
         <span className="gig-title">{title}</span>
@@ -19,6 +26,11 @@ export function Gig({ title, date, venue, city }: GigProps) {
           {venue && <span className="gig-sep">/</span>}
           <span className="gig-city">{city}</span>
         </div>
+        {ticketUrl && !isPast && (
+          <a className="gig-tickets" href={ticketUrl} target="_blank" rel="noopener noreferrer">
+            TICKETS
+          </a>
+        )}
       </div>
     </div>
   );
