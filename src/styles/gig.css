@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
 
+  width: 100%;
   gap: 8px;
   z-index: 1;
 }
@@ -25,8 +26,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  filter: blur(4px);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.6) 6%,
+    rgba(0, 0, 0, 0.6) 94%,
+    transparent 100%
+  );
+  filter: blur(10px);
   z-index: -1;
 }
 
@@ -118,8 +125,19 @@
 .gig.past {
   opacity: 0.38;
   filter: saturate(0.2);
-  background: rgba(0, 0, 0, 0.5);
   filter: blur(1.5px);
+
+}
+
+.gig.past::before {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.6) 12%,
+    rgba(0, 0, 0, 0.6) 88%,
+    transparent 100%
+  );
+  filter: blur(8px);
 }
 
 .gig.past .gig-title {
@@ -138,7 +156,7 @@
 .gig.past::after {
   content: '';
   position: absolute;
-  left: 16px; right: 16px;
+  left: 28px; right: 28px;
   top: 50%;
   height: 1px;
   background: currentColor;
@@ -160,7 +178,7 @@
 }
 
 .gig {
-  padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 16px);
+  padding: clamp(6px, 2vw, 8px) var(--frame-padding-x);
 }
 
 

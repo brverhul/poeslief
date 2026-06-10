@@ -4,18 +4,16 @@ import "./styles/crt.css";
 import "./styles/nav-items.css"
 import "./styles/placeholder.css"
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import catImage from "./assets/POESLIEF-Kat-Zwart-removebg-preview.png";
-
 
 import type { GigProps } from "./components/Gigs.tsx";
 
 import Frame from "./components/Frame.tsx";
-// import CRTImage from "./components/CRTImage.tsx";
-import { GigList } from "./components/Gigs.tsx";
 import CRTReveal from "./components/CRTReveal.tsx";
 import Placeholder from "./components/Placeholder.tsx";
+import ContentPage from "./components/ContentPage.tsx";
 
 const GIGS: GigProps[] = [
   { id: 1, title: "SmurPunx", date: "24-05-2026", venue: "Netwerk", city: "Aalst" },
@@ -26,14 +24,23 @@ const GIGS: GigProps[] = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("homepage");
+  const [activeSection, setActiveSection] = useState("gigs");
+  const [scrollTarget, setScrollTarget] = useState<string | null>(null);
+
+  const handleTabChange = useCallback((tab: string) => {
+    if (activeTab !== "content") setActiveTab("content");
+    setScrollTarget(tab);
+  }, [activeTab]);
+
+  const clearScrollTarget = useCallback(() => setScrollTarget(null), []);
 
   return (
     <main className="app">
       <div
-          className="screen-container"
-          onClick={activeTab === "homepage" ? () => setActiveTab("gigs") : undefined}
-          style={activeTab === "homepage" ? { cursor: "pointer" } : undefined}
-        >
+        className="screen-container"
+        onClick={activeTab === "homepage" ? () => setActiveTab("content") : undefined}
+        style={activeTab === "homepage" ? { cursor: "pointer" } : undefined}
+      >
         <img src={catImage} className="bg-image" alt="" />
 
         <video
@@ -48,8 +55,8 @@ export default function App() {
 
         <Frame
           title="Poeslief"
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
+          activeTab={activeTab === "content" ? activeSection : ""}
+          onTabChange={handleTabChange}
         >
           <CRTReveal activeTab={activeTab}>
             {activeTab === "homepage" && (
@@ -59,20 +66,12 @@ export default function App() {
               />
             )}
 
-            
-            {activeTab === "gigs" && <GigList gigs={GIGS} />}
-
-            {activeTab === "merch" && (
-              <Placeholder
-                message="COMING SOON"
-                sub="ongeduldige poesjes..."
-              />
-            )}
-
-            {activeTab === "songs" && (
-              <Placeholder
-                message="SOOOON.."
-                sub="eerst nog wat aan mijn ballen lekken"
+            {activeTab === "content" && (
+              <ContentPage
+                gigs={GIGS}
+                onSectionChange={setActiveSection}
+                scrollTarget={scrollTarget}
+                onScrolled={clearScrollTarget}
               />
             )}
           </CRTReveal>

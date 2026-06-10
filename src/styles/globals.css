@@ -10,6 +10,7 @@
   color: var(--text);
 
   --frame-overflow: 20px;
+  --frame-padding-x: 30px;
 
 }
 
