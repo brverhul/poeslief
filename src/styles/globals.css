@@ -68,6 +68,7 @@ body {
   object-fit: cover;
   z-index: 0;
   overflow: hidden;
+  filter: blur(60px);
 }
 
 .bg-image {

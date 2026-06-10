@@ -26,35 +26,10 @@ const GIGS: GigProps[] = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("homepage");
-  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
-
-  function updatePosition(
-    clientX: number,
-    clientY: number,
-    element: HTMLDivElement
-  ) {
-    const rect = element.getBoundingClientRect();
-
-    setCursorPos({
-      x: clientX - rect.left,
-      y: clientY - rect.top,
-    });
-  }
 
   return (
     <main className="app">
-      <div
-        className="screen-container"
-        onPointerDown={(e) => {
-          updatePosition(e.clientX, e.clientY, e.currentTarget);
-        }}
-        onPointerMove={(e) => {
-          updatePosition(e.clientX, e.clientY, e.currentTarget);
-        }}
-        onPointerLeave={() => {
-          setCursorPos(null);
-        }}
-      >
+      <div className="screen-container" >
         <img src={catImage} className="bg-image" alt="" />
 
         <video
@@ -63,14 +38,6 @@ export default function App() {
           loop
           playsInline
           className="video-bg"
-          style={{
-            maskImage: cursorPos
-              ? `radial-gradient(circle 120px at ${cursorPos.x}px ${cursorPos.y}px, transparent 60px, black 100px)`
-              : "none",
-            WebkitMaskImage: cursorPos
-              ? `radial-gradient(circle 120px at ${cursorPos.x}px ${cursorPos.y}px, transparent 60px, black 100px)`
-              : "none",
-          }}
         >
           <source src="poeslief_test.mp4" type="video/mp4" />
         </video>
@@ -88,6 +55,7 @@ export default function App() {
               />
             )}
 
+            
             {activeTab === "gigs" && <GigList gigs={GIGS} />}
 
             {activeTab === "merch" && (
