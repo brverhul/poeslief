@@ -29,7 +29,11 @@ export default function App() {
 
   return (
     <main className="app">
-      <div className="screen-container" >
+      <div
+          className="screen-container"
+          onClick={activeTab === "homepage" ? () => setActiveTab("gigs") : undefined}
+          style={activeTab === "homepage" ? { cursor: "pointer" } : undefined}
+        >
         <img src={catImage} className="bg-image" alt="" />
 
         <video
@@ -37,7 +41,7 @@ export default function App() {
           muted
           loop
           playsInline
-          className="video-bg"
+          className={`video-bg${activeTab !== "homepage" ? " video-bg--blurred" : ""}`}
         >
           <source src="poeslief_test.mp4" type="video/mp4" />
         </video>

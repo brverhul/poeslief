@@ -68,6 +68,9 @@ body {
   object-fit: cover;
   z-index: 0;
   overflow: hidden;
+}
+
+.video-bg--blurred {
   filter: blur(60px);
 }
 
