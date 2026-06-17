@@ -62,7 +62,7 @@ export default function App() {
             {activeTab === "homepage" && (
               <Placeholder
                 message="TIK NU"
-                sub="en vindt de verborgen schatten van deze site"
+                sub="TEGEN HET SYSTEEM"
               />
             )}
 
