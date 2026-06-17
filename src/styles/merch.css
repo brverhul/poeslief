@@ -1,0 +1,74 @@
+.merch {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.merch-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.merch-item {
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 1;
+  filter: blur(0px);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.merch-item--out {
+  opacity: 0;
+  filter: blur(20px);
+}
+
+.merch-item--in {
+  opacity: 0;
+  filter: blur(20px);
+  transition: none;
+}
+
+.merch-arrow {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  user-select: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.merch-arrow:hover {
+  opacity: 1;
+}
+
+.merch-dots-spacer {
+  height: calc(5px + 1rem);
+}
+
+.merch-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.merch-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.merch-dot--active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.4);
+}

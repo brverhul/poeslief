@@ -2,8 +2,10 @@ import { useRef, useEffect, useCallback } from "react";
 import type { GigProps } from "./Gigs.tsx";
 import { GigList } from "./Gigs.tsx";
 import Placeholder from "./Placeholder.tsx";
+import Merch from "./Merch.tsx";
 import catImage from "../assets/POESLIEF-Kat-Zwart-removebg-preview.png";
 import "../styles/content.css";
+import "../styles/merch.css";
 
 const SECTIONS = ["gigs", "merch", "songs"] as const;
 type Section = (typeof SECTIONS)[number];
@@ -66,9 +68,7 @@ export default function ContentPage({ gigs, onSectionChange, scrollTarget, onScr
               </div>
             </>
           )}
-          {section === "merch" && (
-            <Placeholder message="COMING SOON" sub="ongeduldige poesjes..." />
-          )}
+          {section === "merch" && <Merch />}
           {section === "songs" && (
             <Placeholder message="SOOOON.." sub="eerst nog wat aan mijn ballen lekken" />
           )}
