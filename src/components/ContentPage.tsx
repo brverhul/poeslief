@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from "react";
 import type { GigProps } from "./Gigs.tsx";
 import { GigList } from "./Gigs.tsx";
 import Placeholder from "./Placeholder.tsx";
-import Merch from "./Merch.tsx";
+import MerchPage from "./MerchPage.tsx";
 import catImage from "../assets/POESLIEF-Kat-Zwart-removebg-preview.png";
 import "../styles/content.css";
 import "../styles/merch.css";
@@ -68,7 +68,7 @@ export default function ContentPage({ gigs, onSectionChange, scrollTarget, onScr
               </div>
             </>
           )}
-          {section === "merch" && <Merch />}
+          {section === "merch" && <MerchPage />}
           {section === "songs" && (
             <Placeholder message="SOOOON.." sub="eerst nog wat aan mijn ballen lekken" />
           )}

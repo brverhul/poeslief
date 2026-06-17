@@ -38,7 +38,7 @@ export default function App() {
     <main className="app">
       <div
         className="screen-container"
-        onClick={activeTab === "homepage" ? () => setActiveTab("content") : undefined}
+        onClick={activeTab === "homepage" ? () => { setActiveTab("content"); setScrollTarget("merch"); } : undefined}
         style={activeTab === "homepage" ? { cursor: "pointer" } : undefined}
       >
         <img src={catImage} className="bg-image" alt="" />

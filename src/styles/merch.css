@@ -50,8 +50,31 @@
   opacity: 1;
 }
 
+.merch-back {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.4rem 1rem 0.4rem 0.6rem;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  color: white;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.merch-back:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
 .merch-dots-spacer {
-  height: calc(5px + 1rem);
+  height: calc(5px + 1rem + 1.5rem + 1.5rem);
 }
 
 .merch-dots {

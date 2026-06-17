@@ -1,15 +1,12 @@
 import { useState, useRef, useCallback } from "react";
-import tshirtBlack from "../assets/tshirt_black (1).png";
-import tshirtGreen from "../assets/tshirt_green.png";
-import tshirtWhite from "../assets/tshirt_white.png";
 
-const shirts = [
-  { src: tshirtBlack, alt: "Black t-shirt" },
-  { src: tshirtGreen, alt: "Green t-shirt" },
-  { src: tshirtWhite, alt: "White t-shirt" },
-];
+type MerchProps = {
+  images: string[];
+  name: string;
+  onBack: () => void;
+};
 
-export default function Merch() {
+export default function Merch({ images, name, onBack }: MerchProps) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<"idle" | "out" | "in">("idle");
   const startX = useRef(0);
@@ -18,9 +15,9 @@ export default function Merch() {
 
   const go = useCallback((direction: 1 | -1) => {
     if (phase !== "idle") return;
-    nextIndex.current = (index + direction + shirts.length) % shirts.length;
+    nextIndex.current = (index + direction + images.length) % images.length;
     setPhase("out");
-  }, [index, phase]);
+  }, [index, phase, images.length]);
 
   const handleTransitionEnd = () => {
     if (phase === "out") {
@@ -57,9 +54,9 @@ export default function Merch() {
         </button>
         <img
           ref={imgRef}
-          src={shirts[index].src}
+          src={images[index]}
           className={itemClass}
-          alt={shirts[index].alt}
+          alt={name}
           draggable={false}
           onTransitionEnd={handleTransitionEnd}
         />
@@ -68,10 +65,14 @@ export default function Merch() {
         </button>
       </div>
       <div className="merch-dots">
-        {shirts.map((_, i) => (
+        {images.map((_, i) => (
           <span key={i} className={`merch-dot${i === index ? " merch-dot--active" : ""}`} />
         ))}
       </div>
+      <button type="button" className="merch-back" onClick={onBack}>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"><polyline points="15,4 7,12 15,20" /></svg>
+        Terug
+      </button>
     </div>
   );
 }
